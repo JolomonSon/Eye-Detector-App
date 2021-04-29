@@ -17,8 +17,10 @@ while True:
     print('Face Coordinates - ',faceCoordinates)
     print('Eyes Coordinates - ',eyesCoordinates)
     #Drawing Rectangles
-    face = [cv2.rectangle(frame, (x,y), (x+w, y+h), (randrange(256), randrange(256), randrange(256)), 2) for (x,y,w,h) in faceCoordinates]
-    eyes = [cv2.rectangle(frame, (x,y), (x+w, y+h), (randrange(256), randrange(256), randrange(256)), 2) for (x,y,w,h) in eyesCoordinates]
+    for (x,y,w,h) in faceCoordinates:
+        cv2.rectangle(frame, (x,y), (x+w, y+h), (randrange(256), randrange(256), randrange(256)),3)
+        for (x,y,w,h) in eyesCoordinates:
+            cv2.rectangle(frame, (x,y), (x+w, y+h), (randrange(256), randrange(256), randrange(256)),1)
     cv2.imshow('Eye Detection', frame)
     key = cv2.waitKey(1)
     # Stop if Q is pressed
